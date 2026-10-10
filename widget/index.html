@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacha's GitHub Page - Portfolio & Projects</title>
+  <link rel="stylesheet" href="chat-widget.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background-color: #f8fafc;
+      padding: 0 20px;
+    }
+    header {
+      max-width: 800px;
+      margin: 60px auto 40px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    p.lead {
+      font-size: 19px;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto 100px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .card h2 {
+      font-size: 20px;
+      color: #0f172a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p {
+      color: #475569;
+      margin-bottom: 12px;
+    }
+    .card ul {
+      margin-left: 20px;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .project-card {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .project-card h3 {
+      font-size: 16px;
+      color: #1e293b;
+      margin-bottom: 6px;
+    }
+    .project-card p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      background: #e2e8f0;
+      color: #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .callout h4 {
+      color: #1e40af;
+      margin-bottom: 4px;
+    }
+    .callout p {
+      color: #1e3a8a;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="badge">🚀 EPITECH & Jönköping University • 5th Year</span>
+    <h1>Sacha Ramstein</h1>
+    <p class="lead">5th-Year Computer Science Student specializing in Backend Architectures & AI.</p>
+  </header>
+
+  <main>
+    <div class="callout">
+      <h4>💬 AI Assistant Active</h4>
+      <p>Look at the bottom right corner of this page! Click the blue chat launcher to ask any questions about my background, internships, skills, or projects.</p>
+    </div>
+
+    <div class="card">
+      <h2>👋 About Me</h2>
+      <p>Driven 5th-year Software Engineering student at <strong>EPITECH Mulhouse</strong>, combining solid professional experience with an international academic background from <strong>Jönköping University (Sweden)</strong> with a 3.7 GPA.</p>
+      <ul>
+        <li><strong>Education</strong>: EPITECH Mulhouse (2022–2027) & Jönköping University AI Specialization (2025–2026)</li>
+        <li><strong>Languages</strong>: TypeScript, Python, JavaScript, PHP, C, C++</li>
+        <li><strong>Focus</strong>: Clean Architecture, Domain-Driven Design (DDD), Microservices, AI/Vision (TensorFlow, YOLO, OpenCV)</li>
+        <li><strong>Currently</strong>: Seeking an internship to contribute to impactful software solutions</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>💼 Professional Experience</h2>
+      <ul>
+        <li><strong>Akord (2025 - 4 mos)</strong>: Backend Developer (Internship) — Scalable microservices with TypeScript, Fastify, and AWS Cloud for a digital security registry application.</li>
+        <li><strong>Cobject (2024–2025)</strong>: Fullstack Developer (Fixed contract & part-time) — Angular migration, web features, and data-driven backend services.</li>
+        <li><strong>Cobject (2023 - 4 mos)</strong>: Backend Developer (Internship) — REST APIs with PHP and Slim 4 using Clean Architecture and DDD.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🛠️ Featured Projects & Hackathons</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>PawPick</h3>
+          <p>Co-Founder & Backend Developer — Shelter management platform with custom adoption matching algorithms.</p>
+          <span class="tag">TypeScript</span> <span class="tag">REST API</span> <span class="tag">Solidaire</span>
+        </div>
+        <div class="project-card">
+          <h3>BaselHack</h3>
+          <p>AI image analysis tool automatically generating technical guide sheets using computer vision.</p>
+          <span class="tag">AI / Vision</span> <span class="tag">Memox Basel</span>
+        </div>
+        <div class="project-card">
+          <h3>MyRag</h3>
+          <p>Plug-and-play RAG assistant for GitHub Pages with free vector search & drop-in widget.</p>
+          <span class="tag">Python</span> <span class="tag">FastAPI</span> <span class="tag">Qdrant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📬 Contact & Details</h2>
+      <p><strong>Email:</strong> <a href="mailto:sacha.ramstein@epitech.eu">sacha.ramstein@epitech.eu</a></p>
+      <p><strong>Phone:</strong> +33 7 71 25 43 59</p>
+      <p><strong>Location:</strong> 68400 Riedisheim, France</p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/sramstein" target="_blank">github.com/sramstein</a></p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Sacha Ramstein. Powered by MyRag.
+  </footer>
+
+  <!-- Drop-in MyRag Chat Widget -->
+  <!-- On your live GitHub Pages site, set data-api-url to your deployed backend (e.g. Render/HuggingFace/Railway) -->
+  <script src="chat-widget.js" data-api-url="http://localhost:8000" data-title="Sacha's Assistant"></script>
+
+</body>
+</html>

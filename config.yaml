@@ -1,0 +1,58 @@
+# RAG Configuration File
+# Easily switch vector databases, embedding models, and LLM providers.
+
+app:
+  title: "MyRag Assistant"
+  description: "RAG Assistant for GitHub Page & Projects"
+  host: "0.0.0.0"
+  port: 8000
+  cors_origins:
+    - "*"  # Allow your GitHub Pages domain (e.g., https://<username>.github.io)
+
+# Vector Database Configuration
+# Qdrant is 100% free!
+# - Local mode: Stores data in local folder (zero cost, no internet needed)
+# - Cloud mode: Free 1GB cloud cluster forever at cloud.qdrant.io (zero credit card needed)
+vector_db:
+  provider: "qdrant"                  # Options: "qdrant", "memory"
+  collection_name: "github_page_rag"
+  storage_path: "./data/qdrant_db"    # Used when qdrant_url is null
+  qdrant_url: null                    # Set QDRANT_URL env var or provide url for Qdrant Cloud Free Tier
+  qdrant_api_key: null                # Set QDRANT_API_KEY env var
+
+# Embedding Model Configuration
+# - "local": Uses FastEmbed (bge-small-en-v1.5) running locally via ONNX (fast, free, offline)
+# - "gemini": Uses Google Gemini embeddings (gemini-embedding-001 or gemini-embedding-2)
+embedding:
+  provider: "local"                   # Options: "local", "gemini"
+  model_name: "BAAI/bge-small-en-v1.5" # For local: BAAI/bge-small-en-v1.5; For gemini: gemini-embedding-001
+  batch_size: 32
+
+# LLM Configuration
+# - "local": Extractive fallback or local Ollama (if running)
+# - "gemini": Google Gemini (gemini-3.8-flash or gemini-flash-latest)
+llm:
+  provider: "local"                   # Options: "local", "gemini"
+  model_name: "gemini-3.8-flash"      # Used when provider is "gemini"
+  temperature: 0.2
+  max_output_tokens: 1024
+  ollama_url: "http://localhost:11434" # Used if provider is local and Ollama is active
+  ollama_model: "llama3.2"
+
+# Retrieval & Search Settings
+retrieval:
+  top_k: 4                            # Number of relevant chunks to retrieve
+  score_threshold: 0.35               # Minimum similarity score (0 to 1)
+
+# Document Chunking Settings
+chunking:
+  chunk_size: 600                     # Characters per chunk
+  chunk_overlap: 100                  # Overlap between consecutive chunks
+
+# System Prompt given to LLM
+prompt:
+  system_instruction: >
+    You are an intelligent, friendly AI assistant embedded on my GitHub Page.
+    Your mission is to answer visitor questions accurately and concisely using ONLY the provided context.
+    If the provided context does not contain enough information to answer, politely explain that you don't have that information.
+    Always format your responses with clean Markdown and mention source references when available.

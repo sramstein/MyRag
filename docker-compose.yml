@@ -1,0 +1,58 @@
+services:
+  # 1. Ollama local LLM service
+  ollama:
+    image: ollama/ollama:latest
+    container_name: myrag_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  # 2. Model puller helper (automatically downloads llama3.2 on first run)
+  ollama-pull:
+    image: ollama/ollama:latest
+    container_name: myrag_ollama_pull
+    depends_on:
+      ollama:
+        condition: service_healthy
+    volumes:
+      - ollama_models:/root/.ollama
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "echo 'Downloading llama3.2 model into Ollama...' &&
+       OLLAMA_HOST=ollama:11434 ollama pull llama3.2 &&
+       echo 'Model llama3.2 ready!'"
+    restart: "no"
+
+  # 3. MyRag FastAPI backend
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myrag_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - RAG_LLM_PROVIDER=local
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Mount data directory so local vector database persists
+      - ./data:/app/data
+      # Mount config so changes to config.yaml apply immediately
+      - ./config.yaml:/app/config.yaml
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
+    name: myrag_ollama_models

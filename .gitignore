@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Data & local DBs
+data/qdrant_db/
+data/cache/
+*.db
+*.sqlite3
+
+# Environment & credentials
+.env
+.env.local
+
+# IDE & OS
+.DS_Store
+.vscode/
+.idea/
